@@ -2,7 +2,7 @@
     "name": "px-to-tw",
     "displayName": "ocm px to tw",
     "description": "Converts px to tailwind unit",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "publisher": "holykoenig",
     "icon": "imgs/ocm-white.png",
     "engines": {
