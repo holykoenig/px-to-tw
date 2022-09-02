@@ -81,6 +81,6 @@ Initial release
 ## Contributing
 
 Feel free to fork this repository and use it the way you like. If you want to propose a nice new feature, just create a pull request from you forked branch.
-[My github](https://github.com/sainoba/vscode-px-to-rem)
+[My github](https://github.com/holykoenig/vscode-px-to-rem)
 
 **Enjoy!**

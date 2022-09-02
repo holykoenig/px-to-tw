@@ -1,9 +1,10 @@
 {
-    "name": "px-to-rem",
-    "displayName": "px to rem",
-    "description": "Converts px to rem, and vice versa",
-    "version": "1.3.1",
-    "publisher": "sainoba",
+    "name": "px-to-tw",
+    "displayName": "ocm px to tw",
+    "description": "Converts px to tailwind unit",
+    "version": "1.0.3",
+    "publisher": "holykoenig",
+    "icon": "imgs/ocm-white.png",
     "engines": {
         "vscode": "^1.5.0"
     },
@@ -17,8 +18,8 @@
         "rem",
         "px to rem"
     ],
-    "icon": "imgs/pxToRemIcon.png",
     "activationEvents": [
+        "onCommand:extension.pxToTw",
         "onCommand:extension.pxToRem",
         "onCommand:extension.remToPx",
         "onCommand:extension.pxToremAndRemToPx",
@@ -26,16 +27,21 @@
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/sainoba/vscode-px-to-rem"
+        "url": "https://github.com/holykoenig/vscode-px-to-rem"
     },
     "main": "./extension",
     "contributes": {
         "configuration": {
             "title": "Px to rem configuration",
             "properties": {
+                "px-to-rem.px-per-tw": {
+                    "type": "integer",
+                    "default": 4,
+                    "description": "Divided Number"
+                },
                 "px-to-rem.px-per-rem": {
                     "type": "integer",
-                    "default": 16,
+                    "default": 14,
                     "description": "Number of pixels per 1rem."
                 },
                 "px-to-rem.only-change-first-ocurrence": {
@@ -57,6 +63,10 @@
         },
         "commands": [
             {
+                "command": "extension.pxToTw",
+                "title": "Px to TW: Converts px to tailwind unit"
+            },
+            {
                 "command": "extension.pxToRem",
                 "title": "Px to rem: Converts px to rem"
             },
@@ -75,7 +85,7 @@
         ],
         "keybindings": [
             {
-                "command": "extension.pxToremAndRemToPx",
+                "command": "extension.pxToTw",
                 "key": "Alt+z"
             },
             {

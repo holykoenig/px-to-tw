@@ -10,6 +10,23 @@ function activate(context) {
   // The commandId parameter must match the command field in package.json
 
   var disposable = vscode.commands.registerTextEditorCommand(
+    "extension.pxToTw",
+    function(textEditor, textEditorEdit) {
+      const config = vscode.workspace.getConfiguration("px-to-tw");
+      const pxPerTw = config.get("px-to-tw");
+      var regexStr = "([0-9]*\\.?[0-9]+)";
+      placeholder(
+        regexStr,
+        (match, value) => `${px2Tw(value, pxPerTw)}`,
+        textEditor,
+        textEditorEdit
+      );
+    }
+  );
+  context.subscriptions.push(disposable);
+
+
+  var disposable = vscode.commands.registerTextEditorCommand(
     "extension.remToPx",
     function(textEditor, textEditorEdit) {
       const config = vscode.workspace.getConfiguration("px-to-rem");
@@ -108,6 +125,19 @@ function px2Rem(px, pxPerRem) {
   const value = parseFloat((px / pxPerRem).toFixed(maxDecimals));
   return value;
 }
+
+function px2Tw(px, pxPerTw) {
+  if (pxPerTw == 0) {
+    return 0;
+  }
+  const config = vscode.workspace.getConfiguration("px-to-rem");
+  var maxDecimals = config.get("number-of-decimals-digits");
+  var twDivider = config.get("px-per-tw");
+  maxDecimals = Math.max(0, maxDecimals);
+  const value = parseFloat((px / twDivider).toFixed(maxDecimals));
+  return value;
+}
+
 function rem2Px(rem, pxPerRem) {
   const config = vscode.workspace.getConfiguration("px-to-rem");
   var maxDecimals = config.get("number-of-decimals-digits");
